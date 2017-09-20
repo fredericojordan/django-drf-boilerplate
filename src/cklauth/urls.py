@@ -5,7 +5,7 @@ from django.conf import settings
 
 urlpatterns = [
     # Auth API endpoints
-    url(r'^api/v1/', include('cklauth.api.v1.urls')),
+    url(r'^api/v1/auth/', include('cklauth.api.v1.urls')),
 
     # Auth Template endpoints
     # Account

@@ -12,23 +12,23 @@ from .views import FacebookLogin
 
 urlpatterns = [
     # URLs that do not require a session or valid token
-    url(r'^auth/login/$', LoginView.as_view(), name='rest_login'),
-    url(r'^auth/password/reset/$', PasswordResetView.as_view(), name='rest_password_reset'),
-    url(r'^auth/password/reset/confirm/$', PasswordResetConfirmView.as_view(), name='rest_password_reset_confirm'),
+    url(r'login/$', LoginView.as_view(), name='rest_login'),
+    url(r'password/reset/$', PasswordResetView.as_view(), name='rest_password_reset'),
+    url(r'password/reset/confirm/$', PasswordResetConfirmView.as_view(), name='rest_password_reset_confirm'),
 
     # URLs that require a user to be logged in with a valid session / token.
-    url(r'^auth/logout/$', LogoutView.as_view(), name='rest_logout'),
-    url(r'^auth/user/$', UserDetailsView.as_view(), name='rest_user_details'),
-    url(r'^auth/password/change/$', PasswordChangeView.as_view(), name='rest_password_change'),
+    url(r'logout/$', LogoutView.as_view(), name='rest_logout'),
+    url(r'user/$', UserDetailsView.as_view(), name='rest_user_details'),
+    url(r'password/change/$', PasswordChangeView.as_view(), name='rest_password_change'),
 
-    url(r'^auth/registration/$', RegisterView.as_view(), name='rest_register'),
-    url(r'^auth/registration/verify-email/$', VerifyEmailView.as_view(), name='rest_verify_email'),
+    url(r'registration/$', RegisterView.as_view(), name='rest_register'),
+    url(r'registration/verify-email/$', VerifyEmailView.as_view(), name='rest_verify_email'),
 
-    url(r'^auth/account-confirm-email/(?P<key>[-:\w]+)/$', TemplateView.as_view(), name='account_confirm_email'),
+    url(r'account-confirm-email/(?P<key>[-:\w]+)/$', TemplateView.as_view(), name='account_confirm_email'),
 ]
 
 # Social API endpoints
 if 'allauth.socialaccount' in settings.INSTALLED_APPS:
     urlpatterns += [
-        url(r'^auth/facebook/$', FacebookLogin.as_view(), name='fb_login')
+        url(r'facebook/$', FacebookLogin.as_view(), name='fb_login')
     ]
